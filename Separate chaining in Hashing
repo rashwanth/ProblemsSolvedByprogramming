@@ -1,0 +1,23 @@
+//Separate chaining in Hashing
+
+class Solution{
+
+    //Function to insert elements of array in the hashTable avoiding collisions.
+    public ArrayList<ArrayList<Integer>> separateChaining(int arr[], int n, int hashSize)
+    {
+        //Your code here
+        ArrayList<ArrayList<Integer>> ar = new ArrayList<ArrayList<Integer>>();
+        
+        for(int i=0;i<=hashSize;++i)
+        {
+            ar.add(new ArrayList<>());
+        }
+        
+        for(int i=0;i<n;++i)
+        {
+            int ind = arr[i] % hashSize;
+            ar.get(ind).add(arr[i]);
+        }
+        return ar;
+    }
+}

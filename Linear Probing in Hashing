@@ -1,0 +1,27 @@
+class Solution{
+    //Function to fill the array elements into a hash table 
+    //using Linear Probing to handle collisions.
+    int[] linearProbing(int hash_size, int arr[], int sizeOfArray)
+    {
+        //Your code here
+        int[] hash = new int[hash_size];
+        Arrays.fill(hash,-1);
+        HashSet<Integer> hset=new HashSet<Integer>();
+        
+        int hs = hash_size;
+        for(int i=0;i<sizeOfArray;++i)
+        {
+            //just to ensure that duplicate entries are not allowed
+            if(hset.contains(arr[i]))continue;
+            hset.add(arr[i]);
+            if(hs==0)return hash;
+            int ind = arr[i]%hash_size;
+            int store = ind;
+            int j=0;
+            while(hash[ind]!=-1) ind = (ind+1)% hash_size;
+            hash[ind] = arr[i];
+            --hs;
+        }
+        return hash;
+    }
+}

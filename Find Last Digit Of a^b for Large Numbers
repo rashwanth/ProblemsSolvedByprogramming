@@ -1,0 +1,23 @@
+
+
+//User function Template for Java
+
+class Solution {
+    static int getModulo(String b){
+        int res = 0;
+        for(char ch : b.toCharArray())
+        {
+            res = ((res*10)+(ch-'0'))%4;
+        }
+        return res;
+    }
+    static int getLastDigit(String a, String b) {
+        // code here
+        int base = Integer.valueOf(""+a.charAt(a.length()-1));
+        if(base==0 || base ==1)return base;
+        if(b.equals("0"))return 1;
+        int p = getModulo(b);
+        return (int)Math.pow(base,p==0? 4 : p)%10;
+        
+    }
+};
